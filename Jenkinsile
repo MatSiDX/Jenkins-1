@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/tu-MatsiDX/prueba_jenkins.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm install'
+                sh 'npm run build --prod'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm run test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Aquí puedes agregar los pasos para desplegar tu aplicación
+                // en un servidor o en un servicio de hosting como Firebase o Netlify.
+            }
+        }
+    }
